@@ -15,7 +15,7 @@ vagrant up
 
 - Job
  - GET job									- Returns a list of all jobs (admin)
- - GET job?monitor=<monitorId>				- Returns a list of jobs for the monitor (admin)
+ - GET job?monitor=(monitorId)				- Returns a list of jobs for the monitor (admin)
  - GET job/:id								- Returns a job by id (admin)
  - POST job									- Creates a job (admin)
  - PUT job/:id								- Updates a job (admin)
@@ -23,7 +23,7 @@ vagrant up
 
 - Monitor
  - GET monitor     						    - Returns a list of all monitors (admin)
- - GET monitor?user=<userId>				- Returns a list of monitors for the user (monitor owner or admin)
+ - GET monitor?user=(userId)				- Returns a list of monitors for the user (monitor owner or admin)
  - GET monitor/:id							- Returns a monitor by id (monitor owner or admin)
  - POST monitor								- Creates a monitor
  - PUT monitor/:id							- Updates a monitor (monitor owner or admin)
@@ -31,7 +31,7 @@ vagrant up
 
 - MonitorEvent
  - GET monitorEvent							- Returns a list of all monitor events (admin)
- - GET monitorEvent?monitor=<monitorId>		- Returns a list of monitor events for the monitor (monitor owner or admin)
+ - GET monitorEvent?monitor=(monitorId)		- Returns a list of monitor events for the monitor (monitor owner or admin)
  - GET monitorEvent/:id						- Returns a monitor event by id (monitor owner or admin)
  - POST monitorEvent						- Creates a monitor event (admin)
 
@@ -73,6 +73,7 @@ Status Warden is a status monitoring service for supervising web address health.
 - [Status Warden](http://www.statuswarden.com), the software as a service implementation
 - The status warden model [npm package](https://www.npmjs.com/package/status-warden-model)
 - Other status warden github repositories
+ - [status-warden-api](https://github.com/codeaim/status-warden-api) - The status warden rest api
  - [status-warden-database](https://github.com/codeaim/status-warden-database) - The status warden mongodb database
  - [status-warden-model](https://github.com/codeaim/status-warden-model) - The status warden mongoose model
  - [status-warden-scheduler](https://github.com/codeaim/status-warden-scheduler) - The status warden scheduler and background processor

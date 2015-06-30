@@ -6,9 +6,13 @@ var log = require('../logger.js');
 module.exports.getMonitors = function (req, res) {
 	log.info("Get monitors called");
 
-    var query;
+    var query = null;
     if(req.user.admin) {
-        query = req.params.user ? { user: req.params.user } : null;
+        if(req.params.user) {
+            if(!model.ObjectId.isValid(req.params.user)) return res.send(422, 'Invalid object id');
+
+            query = { user: req.params.user };
+        }
     } else {
         query = { user: req.user._id };
     }
@@ -25,6 +29,8 @@ module.exports.getMonitors = function (req, res) {
 
 module.exports.getMonitor = function (req, res) {
 	log.info("Get monitor called");
+
+    if(!model.ObjectId.isValid(req.params.id)) return res.send(422, 'Invalid object id');
 
 	Monitor.findOne({ _id: req.params.id }, function(err, monitor) {
 		if (err) {
@@ -75,6 +81,8 @@ module.exports.postMonitor = function (req, res) {
 module.exports.putMonitor = function (req, res) {
 	log.info("Put monitor called");
 
+    if(!model.ObjectId.isValid(req.params.id)) return res.send(422, 'Invalid object id');
+
 	Monitor.findOne({ _id: req.params.id }, function(err, monitor) {
 		if (err) {
 			log.info(err);
@@ -104,6 +112,8 @@ module.exports.putMonitor = function (req, res) {
 
 module.exports.deleteMonitor = function (req, res) {
 	log.info("Delete monitor called");
+
+    if(!model.ObjectId.isValid(req.params.id)) return res.send(422, 'Invalid object id');
 
 	Monitor.findOne({ _id: req.params.id }, function(err, monitor) {
 		if (err) {
